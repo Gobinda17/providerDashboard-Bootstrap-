@@ -6,7 +6,7 @@
 
             <!--begin::Wrapper-->
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-
+                <Sidebar></Sidebar>
                 <!--begin::Main-->
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                     <!--begin::Content wrapper-->
@@ -30,10 +30,12 @@
 
 <script>
 import Content from './content/Content.vue';
+import Sidebar from '../side-bar/Sidebar.vue';
 export default {
     name: "main-layout",
     components: {
         Content,
+        Sidebar,
     },
 }
 </script>
