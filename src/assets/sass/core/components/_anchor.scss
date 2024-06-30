@@ -1,0 +1,39 @@
+//
+// Anchor
+//
+
+.anchor {
+    display: flex;
+    align-items: center;
+
+    a {
+        position: relative;
+        display: none;
+        align-items: center;
+        justify-content:flex-start;
+        height: 1em;
+        width: 1.25em;
+        margin-left: -1.25em;
+        font-weight: 500;
+        font-size: 0.8em;
+        text-decoration: none;
+        color: var(--#{$prefix}text-muted);
+        transition: $transition-base;
+
+        &:before {
+            content: '#';
+        }
+    }
+
+    &:hover {
+        a {
+            display: flex;
+            color: var(--#{$prefix}primary);
+
+            &:hover {
+                color: var(--#{$prefix}primary);
+                transition: $transition-base;
+            }
+        }
+    }
+}
