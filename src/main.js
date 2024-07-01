@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import 'remixicon/fonts/remixicon.css'
 import './style.css'
-import './style.css'
 
 const app = createApp(App)
 

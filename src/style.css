@@ -21,3 +21,7 @@ a {
 .text-dark {
   color: #fff !important;
 }
+
+.fs-7 {
+  font-size: 1.2rem !important;
+}
