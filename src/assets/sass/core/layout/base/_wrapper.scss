@@ -50,16 +50,16 @@
     }
 
     // Sidebar Panel
-    [data-mz-app-sidebar-panel-fixed="true"] & {
-      margin-left: calc(
-        var(--#{$prefix}app-sidebar-width) +
-          var(--#{$prefix}app-sidebar-gap-start, 0px) +
-          var(--#{$prefix}app-sidebar-gap-end, 0px) +
-          var(--#{$prefix}app-sidebar-panel-width) +
-          var(--#{$prefix}app-sidebar-panel-gap-start, 0px) +
-          var(--#{$prefix}app-sidebar-panel-gap-end, 0px)
-      );
-    }
+    // [data-mz-app-sidebar-panel-fixed="true"] & {
+    //   margin-left: calc(
+    //     var(--#{$prefix}app-sidebar-width) +
+    //       var(--#{$prefix}app-sidebar-gap-start, 0px) +
+    //       var(--#{$prefix}app-sidebar-gap-end, 0px) +
+    //       var(--#{$prefix}app-sidebar-panel-width) +
+    //       var(--#{$prefix}app-sidebar-panel-gap-start, 0px) +
+    //       var(--#{$prefix}app-sidebar-panel-gap-end, 0px)
+    //   );
+    // }
 
     // Aside
     [data-mz-app-aside-fixed="true"] & {

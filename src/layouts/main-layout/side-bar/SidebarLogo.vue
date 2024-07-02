@@ -30,10 +30,11 @@ export default {
     },
     methods: {
         toogleMenu() {
-            if(this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue === "off") {
-                this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue = "on";
+            let element = this.fetchBody();
+            if(element.attributes["data-mz-app-sidebar-minimize"].nodeValue === "off") {
+                element.attributes["data-mz-app-sidebar-minimize"].nodeValue = "on";
             } else {
-                this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue = "off";
+                element.attributes["data-mz-app-sidebar-minimize"].nodeValue = "off";
             }
         },
         fetchBody() {
