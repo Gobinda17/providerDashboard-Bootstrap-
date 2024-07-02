@@ -10,8 +10,8 @@
         <!--begin::Sidebar toggle-->
         <div ref="toggleRef" id="mz_app_sidebar_toggle"
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
-            data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
-            data-kt-toggle-name="app-sidebar-minimize">
+            data-mz-toggle="true" data-mz-toggle-state="active" data-mz-toggle-target="body"
+            data-mz-toggle-name="app-sidebar-minimize">
             <i class="ri-arrow-left-fill fs-3 rotate-180 ms-1"></i>
         </div>
         <!--end::Sidebar toggle-->
