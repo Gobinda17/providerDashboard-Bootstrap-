@@ -5,7 +5,7 @@
     data-mz-drawer-overlay="true"
     data-mz-drawer-width="225px"
     data-mz-drawer-direction="start"
-    data-mz-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+    data-mz-drawer-toggle="#mz_app_sidebar_mobile_toggle">
     <SidebarLogoVue></SidebarLogoVue>
     <SidebarMenuVue></SidebarMenuVue>
   </div>

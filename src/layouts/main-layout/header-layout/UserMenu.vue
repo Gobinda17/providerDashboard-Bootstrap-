@@ -1,6 +1,6 @@
 <template>
 <!--begin::Menu-->
-<div id="mz_user_menu" class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semobold py-4 fs-6 w-275px" data-mz-menu="true">
+<div id="mz_user_menu" class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold py-4 fs-6 w-275px" data-mz-menu="true">
     <!--begin::Menu item-->
     <div class="menu-item px-3">
         <div class="menu-content d-flex align-items-center px-3">
@@ -16,7 +16,7 @@
                     Max Smith
                     <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Active</span>
                 </div>
-                <a href="#" class="fw-semobold text-muted text-hover-primary fs-7">max@kt.com</a>
+                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
             </div>
             <!--end::Username-->
         </div>

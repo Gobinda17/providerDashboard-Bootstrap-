@@ -15,28 +15,18 @@
     data-mz-app-sidebar-enabled="true"
     data-mz-app-sidebar-fixed="true"
     data-mz-app-sidebar-hoverable="true"
+    data-mz-app-sidebar-minimize="off"
     data-mz-app-sidebar-push-header="true"
     data-mz-app-sidebar-push-toolbar="true"
     data-mz-app-sidebar-push-footer="true"
-    data-mz-app-sidebar-panel-fixed="false"
+    data-mz-app-sidebar-panel-fixed="true"
     data-mz-app-header-fixed="true"
     data-mz-app-header-minimize="on"
     cz-shortcut-listen="true"
   >
     <!--begin::Theme mode setup on page load-->
     <script>
-      let themeMode = "system";
-
-      if (localStorage.getItem("kt_theme_mode_value")) {
-        themeMode = localStorage.getItem("kt_theme_mode_value");
-      }
-
-      if (themeMode === "system") {
-        themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      }
-
+      let themeMode = "dark";
       document.documentElement.setAttribute("data-bs-theme", themeMode);
     </script>
     <!--end::Theme mode setup on page load-->

@@ -10,7 +10,7 @@
                 <!--end::Title-->
 
                 <!--begin::Link-->
-                <div class="text-gray-400 fw-semobold fs-4">
+                <div class="text-gray-400 fw-semibold fs-4">
                     New Here?
 
                     <router-link to="/sign-up" class="link-primary fw-bold">

@@ -8,10 +8,10 @@
         </router-link>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->
-        <div ref="toggleRef" id="mz_app_sidebar_toggle"
+        <div id="mz_app_sidebar_toggle"
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
             data-mz-toggle="true" data-mz-toggle-state="active" data-mz-toggle-target="body"
-            data-mz-toggle-name="app-sidebar-minimize">
+            data-mz-app-sidebar-minimize="on" @click="toogleMenu()">
             <i class="ri-arrow-left-fill fs-3 rotate-180 ms-1"></i>
         </div>
         <!--end::Sidebar toggle-->
@@ -27,6 +27,22 @@ export default {
         return {
             logo: logo,
         }
+    },
+    methods: {
+        toogleMenu() {
+            if(this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue === "off") {
+                this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue = "on";
+            } else {
+                this.fetchBody().attributes["data-mz-app-sidebar-minimize"].nodeValue = "off";
+            }
+        },
+        fetchBody() {
+            let bodyElement = document.getElementById('mz_app_body');
+            return bodyElement;
+        }
+    },
+    mounted() {
+        this.fetchBody()
     }
 }
 </script>
