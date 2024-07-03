@@ -6,16 +6,14 @@
         <!--begin::Menu-->
         <div id="#mz_app_sidebar_menu" class="menu menu-column menu-rounded menu-sub-indention px-3" data-mz-menu="true">
             <div class="menu-item">
-                <div class="menu-content">
-                    <router-link to="/dashboard" class="active router-link-exact-active menu-link">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">
-                            <i class="ri-menu-line"></i>
-                            <span>
-                                Dashboard
-                            </span>
+                <router-link to="/dashboard" class="active router-link-exact-active menu-link">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-menu-line"></i>
+                        <span class="menuTitle">
+                            Dashboard
                         </span>
-                    </router-link>
-                </div>
+                    </span>
+                </router-link>
             </div>
             <div class="menu-item pt-5">
                 <div class="menu-content">
@@ -25,22 +23,20 @@
                 </div>
             </div>
             <div class="menu-item">
-                <div class="menu-content">
-                    <router-link to="/dashboard" class="router-link-exact-active menu-link">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">
-                            <i class="ri-pages-line"></i>
-                            <span>
-                                Pages
-                            </span>
+                <router-link to="/dashboard" class="router-link-exact-active menu-link">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Pages
                         </span>
-                    </router-link>
-                </div>
+                    </span>
+                </router-link>
             </div>
             <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click" @click="showDropDown()">
                 <span class="router-link-exact-active menu-link justify-content-between">
                     <span class="menu-heading fw-bold text-uppercase fs-7">
                         <i class="ri-pages-line"></i>
-                        <span>
+                        <span class="menuTitle">
                             My Servcies
                         </span>
                     </span>

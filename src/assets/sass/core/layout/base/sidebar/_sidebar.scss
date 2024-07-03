@@ -48,14 +48,12 @@
 
   [data-mz-app-sidebar-stacked="true"] {
     --#{$prefix}app-sidebar-width: calc(
-      var(--#{$prefix}app-sidebar-primary-width) +
-        var(--#{$prefix}app-sidebar-secondary-width, 0px)
+      var(--#{$prefix}app-sidebar-primary-width) + var(--#{$prefix}app-sidebar-secondary-width, 0px)
     );
   }
 
   [data-mz-app-sidebar-minimize="on"] {
     --#{$prefix}app-sidebar-width: #{$app-sidebar-minimize-width};
-
     --#{$prefix}app-sidebar-gap-start: #{$app-sidebar-minimize-gap-start};
     --#{$prefix}app-sidebar-gap-end: #{$app-sidebar-minimize-gap-end};
     --#{$prefix}app-sidebar-gap-top: #{$app-sidebar-minimize-gap-top};
@@ -64,7 +62,6 @@
 
   [data-mz-app-sidebar-sticky="on"] {
     --#{$prefix}app-sidebar-width: #{$app-sidebar-sticky-width};
-
     --#{$prefix}app-sidebar-gap-start: #{$app-sidebar-sticky-gap-start};
     --#{$prefix}app-sidebar-gap-end: #{$app-sidebar-sticky-gap-end};
     --#{$prefix}app-sidebar-gap-top: #{$app-sidebar-sticky-gap-top};
@@ -73,6 +70,42 @@
 
   [data-mz-app-sidebar-collapse="on"] {
     --#{$prefix}app-sidebar-width: 0px;
+  }
+
+  [data-mz-app-sidebar-minimize="on"] {
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+  }
+
+  [data-mz-app-sidebar-minimize="on"] {
+    .page-heading {
+      display: none;
+    }
+  }
+
+  [data-mz-app-sidebar-minimize="on"] {
+    .app-sidebar-menu {
+      .menuTitle {
+        display: none;
+      }
+    }
+  }
+
+  [data-mz-app-sidebar-minimize="on"] {
+    .app-sidebar:hover {
+      .app-sidebar-menu {
+        .menuTitle {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  [data-mz-app-sidebar-minimize="on"] .app-sidebar:hover {
+    .page-heading {
+      display: block;
+    }
   }
 
   // States
@@ -130,8 +163,7 @@
       }
     }
 
-    [data-mz-app-sidebar-hoverable="true"][data-mz-app-sidebar-minimize="on"]
-      &:hover:not(.animating) {
+    [data-mz-app-sidebar-hoverable="true"][data-mz-app-sidebar-minimize="on"] &:hover:not(.animating) {
       transition: $app-sidebar-base-transition;
       width: var(--#{$prefix}app-sidebar-width-actual);
       @include property(box-shadow, $app-sidebar-minimize-hover-box-shadow);
@@ -178,9 +210,7 @@
   // Integration
   .app-sidebar {
     // Header
-    [data-mz-app-sidebar-fixed="true"][data-mz-app-header-fixed="true"]:not(
-        [data-mz-app-sidebar-push-header="true"]
-      )
+    [data-mz-app-sidebar-fixed="true"][data-mz-app-header-fixed="true"]:not([data-mz-app-sidebar-push-header="true"])
       & {
       top: var(--#{$prefix}app-header-height);
     }
@@ -190,10 +220,7 @@
         [data-mz-app-sidebar-push-toolbar="true"]
       )
       & {
-      top: calc(
-        var(--#{$prefix}app-header-height) +
-          var(--#{$prefix}app-toolbar-height, 0px)
-      );
+      top: calc(var(--#{$prefix}app-header-height) + var(--#{$prefix}app-toolbar-height, 0px));
     }
   }
 }
@@ -225,8 +252,7 @@
 
   [data-mz-app-sidebar-stacked="true"] {
     --#{$prefix}app-sidebar-width: calc(
-      var(--#{$prefix}app-sidebar-primary-width) +
-        var(--#{$prefix}app-sidebar-secondary-width, 0)
+      var(--#{$prefix}app-sidebar-primary-width) + var(--#{$prefix}app-sidebar-secondary-width, 0)
     );
   }
 
@@ -264,8 +290,7 @@
       }
     }
 
-    [data-mz-app-sidebar-hoverable-mobile="true"][data-mz-app-sidebar-minimize-mobile="on"]
-      &:hover:not(.animating) {
+    [data-mz-app-sidebar-hoverable-mobile="true"][data-mz-app-sidebar-minimize-mobile="on"] &:hover:not(.animating) {
       transition: $app-sidebar-base-transition;
       width: var(--#{$prefix}app-sidebar-width-actual);
       box-shadow: var(--#{$prefix}app-sidebar-minimize-hover-box-shadow-mobile);
