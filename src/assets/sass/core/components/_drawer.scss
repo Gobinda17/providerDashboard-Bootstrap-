@@ -48,6 +48,12 @@
 	display: none;
 }
 
+[data-mz-drawer="false"] {
+	display: flex !important;
+	position: fixed;
+	height: 100vh;
+}
+
 // Animation
 @keyframes animation-drawer-fade-in {
 	from   { opacity: 0; }
