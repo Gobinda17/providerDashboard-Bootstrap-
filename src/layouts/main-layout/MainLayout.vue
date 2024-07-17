@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <!--end::Content wrapper-->
-
+                    <Footer></Footer>
                 </div>
                 <!--end:::Main-->
             </div>
@@ -33,6 +33,7 @@ import Content from './content/Content.vue'
 import Sidebar from './side-bar/Sidebar.vue'
 import Heading from "./header-layout/Header.vue"
 import Toolbar from './toolbar/Toolbar.vue'
+import Footer from '../footer/Footer.vue'
 export default {
     name: "main-layout",
     components: {
@@ -40,6 +41,7 @@ export default {
         Sidebar,
         Heading,
         Toolbar,
+        Footer,
     },
 }
 </script>
