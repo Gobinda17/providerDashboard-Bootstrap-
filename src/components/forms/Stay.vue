@@ -1,7 +1,7 @@
 <template>
     <div>
         <!--begin:Form-->
-        <el-form id="mz_modal_new_target_form" class="form">
+        <el-form id="mz_modal_new_target_form" class="form" v-model="formData">
             <!--begin::Heading-->
             <div class="mb-13">
                 <!--begin::Title-->
@@ -55,7 +55,7 @@
             <!--end::Checkboxes-->
 
             <!--begin::Input group-->
-            <div class="d-flex flex-column mb-8 fv-row">
+            <div class="d-flex flex-column fv-row">
                 <!--begin::Label-->
                 <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                     <span class="required">Location</span>
@@ -63,22 +63,22 @@
                 <!--end::Label-->
 
                 <el-form-item prop="targetTitle">
-                    <el-input v-model="inpurField" placeholder="Enter Location" name="location"></el-input>
+                    <el-input v-model="formData.location" placeholder="Enter Location" name="location"></el-input>
                 </el-form-item>
             </div>
             <!--end::Input group-->
 
             <!--begin::Input group-->
-            <div class="row g-9 mb-8">
+            <div class="row g-9">
                 <!--begin::Col-->
                 <div class="col-md-6 fv-row">
                     <label class="required fs-6 fw-semobold mb-2">Availability</label>
 
                     <el-form-item prop="assign">
-                        <el-select placeholder="Select a Team Member" name="assign" as="select">
+                        <el-select placeholder="Select Availability" name="availability" as="select" v-model="formData.available" style="--el-text-color-regular: #fff;">
                             <el-option value="">Select</el-option>
-                            <el-option label="always" value="1">Always Open</el-option>
-                            <el-option label="event" value="2">On a Event</el-option>
+                            <el-option label="Always Open" value="1">Always Open</el-option>
+                            <el-option label="On an Event" value="2">On an Event</el-option>
                         </el-select>
                     </el-form-item>
                 </div>
@@ -86,29 +86,108 @@
 
                 <!--begin::Col-->
                 <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-semobold mb-2">Due Date</label>
-
-                    <!--begin::Input-->
-                    <div class="position-relative align-items-center">
-                        <!--begin::Datepicker-->
-                        <el-form-item prop="dueDate">
-                            <el-date-picker type="date" placeholder="Select a date" :teleported="false"
-                                popper-class="override-styles" name="dueDate" />
-                        </el-form-item>
-                        <!--end::Datepicker-->
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="required fs-6 fw-semobold mb-2">Start Date</label>
+        
+                            <!--begin::Input-->
+                            <div class="position-relative align-items-center">
+                                <!--begin::Datepicker-->
+                                <el-form-item prop="startDate">
+                                    <el-date-picker type="date" placeholder="Select a date" :teleported="false"
+                                        popper-class="override-styles" name="startDate" width="100%" style="--el-input-bg-color: transparent; --el-text-color-regular: #fff; --el-date-editor-width: 100%;" v-model="formData.startDate"/>
+                                </el-form-item>
+                                <!--end::Datepicker-->
+                            </div>
+                            <!--end::Input-->
+                        </div>
+    
+                        <!--begin::Col-->
+                        <div class="col-md-6 ">
+                            <label class="required fs-6 fw-semobold mb-2">End Date</label>
+        
+                            <!--begin::Input-->
+                            <div class="position-relative align-items-center">
+                                <!--begin::Datepicker-->
+                                <el-form-item prop="endDate">
+                                    <el-date-picker type="date" placeholder="Select a date" :teleported="false"
+                                        popper-class="override-styles" name="endDate" style="--el-input-bg-color: transparent; --el-text-color-regular: #fff; --el-date-editor-width: 100%;" v-model="formData.endDate"/>
+                                </el-form-item>
+                                <!--end::Datepicker-->
+                            </div>
+                            <!--end::Input-->
+                        </div>
+                        <!--end::Col-->
                     </div>
-                    <!--end::Input-->
                 </div>
                 <!--end::Col-->
             </div>
             <!--end::Input group-->
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="row" v-for="(image, index) in formData.images" :key="index">
+                        <div class="col-10">
+                            <!--begin::Input group-->
+                            <div class="d-flex flex-column fv-row">
+                                <!--begin::Label-->
+                                <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                                    <span class="required">Upload Image</span>
+                                </label>
+                                <!--end::Label-->
+                
+                                <el-form-item prop="targetTitle">
+                                    <el-input type="file" v-model="image.name" placeholder="Enter Location" ></el-input>
+                                </el-form-item>
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <div class="col-2 d-flex align-items-center">
+                            <button v-show="index === 0" class="btn btn-sm btn-primary w-100" type="button" @click="addMore">
+                                <i class="ri-file-add-line" style="font-size: 20px;"></i>
+                            </button>
+                            <button v-show="index > 0" class="btn btn-sm btn-danger w-100" type="button" @click="deleteFile(index)">
+                                <i class="ri-chat-delete-line" style="font-size: 20px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="row" v-for="(video, index) in formData.videos" :key="index">
+                        <div class="col-10">
+                            <!--begin::Input group-->
+                            <div class="d-flex flex-column fv-row">
+                                <!--begin::Label-->
+                                <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                                    <span class="required">Upload Video</span>
+                                </label>
+                                <!--end::Label-->
+                
+                                <el-form-item prop="targetTitle">
+                                    <el-input type="file" v-model="video.name" placeholder="Enter Location" ></el-input>
+                                </el-form-item>
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <div class="col-2 d-flex align-items-center">
+                            <button v-show="index === 0" class="btn btn-sm btn-primary w-100" type="button" @click="addMoreVideo">
+                                <i class="ri-file-add-line" style="font-size: 20px;"></i>
+                            </button>
+                            <button v-show="index > 0" class="btn btn-sm btn-danger w-100" type="button" @click="deleteFileVideo(index)">
+                                <i class="ri-chat-delete-line" style="font-size: 20px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-8">
                 <label class="fs-6 fw-semobold mb-2">Target Details</label>
 
                 <el-form-item prop="targetDetails">
-                    <el-input type="textarea" rows="3" name="targetDetails" placeholder="Type Target Details" />
+                    <el-input type="textarea" rows="3" name="targetDetails" placeholder="Type Target Details" style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;"/>
                 </el-form-item>
             </div>
             <!--end::Input group-->
@@ -123,7 +202,7 @@
 
                 <el-form-item prop="tags">
                     <el-select v-model="tags" multiple filterable allow-create default-first-option
-                        placeholder="Choose tags for your target">
+                        placeholder="Choose tags for your target" style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;">
                         <el-option label="Important" value="important"> </el-option>
                         <el-option label="Urgent" value="urgent"> </el-option>
                         <el-option label="High" value="high"> </el-option>
@@ -224,7 +303,43 @@ export default {
         return {
             inpurField: '',
             tags: [],
+            formData: {
+                location: "",
+                available: "",
+                startDate: "",
+                endDate: "",
+                images: [{
+                   name: "",
+                }],
+                videos: [{
+                    name: ""
+                }]
+            },
         };
+    },
+    methods: {
+        addMore() {
+            this.formData.images.push({ name: ""});
+        },
+        deleteFile(index) {
+            this.formData.images.splice(index, 1);
+        },
+        addMoreVideo() {
+            this.formData.videos.push({ name: ""});
+        },
+        deleteFileVideo(index) {
+            this.formData.videos.splice(index, 1);
+        }
     }
 }
 </script>
+
+<style scoped>
+.el-input :deep(.el-input__inner), .el-select :deep(.el-select__wrapper){
+    color: #fff !important;
+    width: 100%;
+}
+.el-input :deep(.el-input__wrapper), .el-select :deep(.el-select__wrapper){
+    background-color: transparent !important;
+}
+</style>
