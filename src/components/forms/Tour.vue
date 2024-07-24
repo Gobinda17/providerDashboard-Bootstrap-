@@ -1,5 +1,5 @@
 <template>
-    <div class="app-container container-fluid">
+    <div>
         <!--begin:Form-->
         <el-form id="mz_modal_new_target_form" class="form" v-model="formData">
             <!--begin::Heading-->
@@ -298,7 +298,7 @@
 
 <script>
 export default {
-    name: 'Stay',
+    name: 'Tour',
     data() {
         return {
             inpurField: '',

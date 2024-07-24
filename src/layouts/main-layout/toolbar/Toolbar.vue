@@ -38,5 +38,22 @@
 <script>
 export default {
     name: "Toolbar",
+    data() {
+        return {
+            pageTitle: "",
+            breadcrumbs: [],
+        };
+    },
+    computed: {
+        pageTitle() {
+            return this.$route.meta.pageTitle;
+        },
+        breadcrumbs() {
+            return this.$route.meta.breadcrumbs;
+        },
+        watch: {
+            
+        }
+    }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div id="mz_app_content_container" class="app-container container-fluid">
-        <Stay></Stay>
+        <!-- <Stay></Stay> -->
     </div>
 </template>
 
