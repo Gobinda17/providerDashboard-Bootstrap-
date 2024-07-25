@@ -1,22 +1,22 @@
 <template>
-    <div>
+    <div class="app-container container-fluid">
         <!--begin:Form-->
         <el-form id="mz_modal_new_target_form" class="form" v-model="formData">
             <!--begin::Heading-->
             <div class="mb-13">
                 <!--begin::Title-->
-                <h1 class="mb-3">Stay Entry Form</h1>
+                <h1 class="mb-3">Tour  Form</h1>
                 <!--end::Title-->
             </div>
             <!--end::Heading-->
 
             <!--begin::Checkboxes-->
-            <div class="d-flex align-items-center justify-content-evenly">
+            <div class="d-flex align-items-center justify-content-start mb-4">
                 <!--begin::Checkbox-->
                 <label class="form-check form-check-custom form-check-solid me-10">
                     <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]" value="camp"
                         checked />
-                    <span class="form-check-label fw-semobold"> Camp </span>
+                    <span class="form-check-label fw-semobold"> Religious Tour </span>
                 </label>
                 <!--end::Checkbox-->
 
@@ -24,33 +24,10 @@
                 <label class="form-check form-check-custom form-check-solid">
                     <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]"
                         value="hostel" />
-                    <span class="form-check-label fw-semobold"> Hostel </span>
+                    <span class="form-check-label fw-semobold"> Recreational Tour </span>
                 </label>
                 <!--end::Checkbox-->
 
-                <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid">
-                    <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]"
-                        value="homestay" />
-                    <span class="form-check-label fw-semobold"> Homestay </span>
-                </label>
-                <!--end::Checkbox-->
-
-                <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid">
-                    <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]"
-                        value="resort" />
-                    <span class="form-check-label fw-semobold"> Resort </span>
-                </label>
-                <!--end::Checkbox-->
-
-                <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid">
-                    <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]"
-                        value="other" />
-                    <span class="form-check-label fw-semobold"> Other </span>
-                </label>
-                <!--end::Checkbox-->
             </div>
             <!--end::Checkboxes-->
 
@@ -58,7 +35,7 @@
             <div class="d-flex flex-column fv-row">
                 <!--begin::Label-->
                 <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                    <span class="required">Location</span>
+                    <span class="required">Tour Name</span>
                 </label>
                 <!--end::Label-->
 

@@ -18,31 +18,31 @@ const router = createRouter({
           path: '/dashboard',
           name: 'Dashboard',
           component: () => import('../views/Dashboard.vue'),
-        }
-      ]
-    },
-    {
-      path: '/stay',
-      component: () => import("../layouts/main-layout/MainLayout.vue"),
-      children: [
+          meta: {
+            pageTitle: "Dashboard",
+            breadcrumbs: ['Dashboard'],
+          },
+        },
         {
           path: '/stay',
-          name: 'Stay',
+          name: "Stay",
           component: () => import('../components/forms/Stay.vue'),
-        }
-      ]
-    },
-    {
-      path: '/tour',
-      component: () => import("../layouts/main-layout/MainLayout.vue"),
-      children: [
+          meta: {
+            pageTitle: "Stay",
+            breadcrumbs: ['Stay', 'Registration'],
+          },
+        },
         {
           path: '/tour',
           name: 'Tour',
           component: () => import('../components/forms/Tour.vue'),
+          meta: {
+            pageTitle: "Tour",
+            breadcrumbs: ['Tour', 'Registration'],
+          },
         }
       ]
-    }
+    },
   ]
 })
 
