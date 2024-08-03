@@ -40,8 +40,57 @@
                 <!--end::Label-->
 
                 <el-form-item prop="targetTitle">
-                    <el-input v-model="formData.location" placeholder="Enter Location" name="location"></el-input>
+                    <el-input type="text" v-model="formData.tour_name" placeholder="Enter Tour Name" name="tour_name"></el-input>
                 </el-form-item>
+            </div>
+            <!--end::Input group-->
+
+            <!--begin::Input group-->
+            <div class="row g-9">
+                <div class="col-md-3 fv-row">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                        <span class="required">Capacity</span>
+                    </label>
+                    <!--end::Label-->
+        
+                    <el-form-item prop="targetTitle">
+                        <el-input type="number" v-model="formData.capacity" placeholder="Enter Capacity" name="capacity"></el-input>
+                    </el-form-item>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                        <span class="required">Starting Point</span>
+                    </label>
+                    <!--end::Label-->
+        
+                    <el-form-item prop="targetTitle">
+                        <el-input type="text" v-model="formData.location" placeholder="Enter Location" name="location"></el-input>
+                    </el-form-item>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                        <span class="required">Price Per Person</span>
+                    </label>
+                    <!--end::Label-->
+        
+                    <el-form-item prop="targetTitle">
+                        <el-input type="number" v-model="formData.price" placeholder="Enter Price" name="price"></el-input>
+                    </el-form-item>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                        <span class="required"></span>
+                    </label>
+                    <!--end::Label-->
+        
+                    <el-form-item prop="targetTitle">
+                        <el-input type="number" v-model="formData.price" placeholder="Enter Price" name="price"></el-input>
+                    </el-form-item>
+                </div>
             </div>
             <!--end::Input group-->
 
@@ -281,8 +330,10 @@ export default {
             inpurField: '',
             tags: [],
             formData: {
+                tour_name: "",
+                capacity: 0,
                 location: "",
-                available: "",
+                price: 0,
                 startDate: "",
                 endDate: "",
                 images: [{
