@@ -44,11 +44,19 @@
                 </span>
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
-                        <router-link class="menu-link" active-class="active" to="/">
+                        <router-link class="menu-link" active-class="active" to="/stay">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">Stay</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="/tour">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Tour</span>
                         </router-link>
                     </div>
                     <!-- <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click">
