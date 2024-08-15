@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
     "element-plus": "^2.7.7",
     "remixicon": "^4.3.0",
     "vue": "^3.4.29",
     "vue-multiselect": "^3.0.0-beta.3",
-    "vue-router": "^4.4.0"
+    "vue-router": "^4.4.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

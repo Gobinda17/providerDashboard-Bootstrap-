@@ -22,6 +22,8 @@
             <!--begin::Heading-->
 
             <!--begin::Input group-->
+            <form action="" method="post" @submit.prevent="submit">
+
             <div class="fv-row mb-10">
                 <!--begin::Label-->
                 <label class="form-label fs-6 fw-bold text-dark">Email</label>
@@ -29,7 +31,7 @@
 
                 <!--begin::Input-->
                 <input tabindex="1" class="form-control form-control-lg form-control-solid" type="text" name="email"
-                    autocomplete="off" />
+                    autocomplete="off"  v-model="form.email"/>
                 <!--end::Input-->
             </div>
             <!--end::Input group-->
@@ -52,7 +54,7 @@
 
                 <!--begin::Input-->
                 <input tabindex="2" class="form-control form-control-lg form-control-solid" type="password"
-                    name="password" autocomplete="off" />
+                    name="password" autocomplete="off" v-model="form.password" />
                 <!--end::Input-->
             </div>
             <!--end::Input group-->
@@ -83,6 +85,7 @@
                 <!--end::Google link-->
             </div>
             <!--end::Actions-->
+            </form>
         </form>
         <!--end::Form-->
     </div>
@@ -91,12 +94,30 @@
 
 <script>
 import google from '../../../public/media/social-logos/google.svg'
+import { mapActions } from 'vuex'
+
 export default {
     name: "Sign-In",
     data() {
         return {
             google: google,
+            form:{
+                email:'',
+                password:''
+            },
+            showError: false,
         }
-    }
+    },
+    methods:{
+        
+          ...mapActions(["login"]),
+  
+          submit: function () {
+            
+             this.$store.dispatch('login', this.form)
+            .then(() => this.$router.push('/dashboard'))
+            .catch(err => console.log(err))
+          }
+      }
 };
 </script>
