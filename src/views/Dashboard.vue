@@ -1,15 +1,19 @@
 <template>
     <div id="mz_app_content_container" class="app-container container-fluid">
-        <!-- <Stay></Stay> -->
+        <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+            <div class="col-12 mb-md-5 mb-xl-10">
+                <TableWidget></TableWidget>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import Stay from '../components/forms/Stay.vue';
+import TableWidget from '../components/dashboard_widget/TableWidget.vue';
 export default {
     name: "Dashboard",
     components: {
-        Stay,
-    }
+        TableWidget,
+    },
 }
-</script>
+</script>wasda

@@ -54,7 +54,7 @@ const router = createRouter({
         {
           path: '/stay',
           name: "Stay",
-          component: () => import('../components/forms/Stay.vue'),
+          component: () => import('../views/forms/Stay.vue'),
           meta: {
             pageTitle: "Stay",
             breadcrumbs: ['Stay', 'Registration'],
@@ -63,7 +63,7 @@ const router = createRouter({
         {
           path: '/tour',
           name: 'Tour',
-          component: () => import('../components/forms/Tour.vue'),
+          component: () => import('../views/forms/Tour.vue'),
           meta: {
             pageTitle: "Tour",
             breadcrumbs: ['Tour', 'Registration'],
