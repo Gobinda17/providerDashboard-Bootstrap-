@@ -1,37 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/splash-screen.css" />
-    <title>Provider Dashboard</title>
-  </head>
-  <body
-    class="app-dark-sidebar"
-    id="mz_app_body"
-    data-mz-app-layout="dark-sidebar"
-    data-mz-app-toolbar-enabled="true"
-    data-mz-app-sidebar-enabled="true"
-    data-mz-app-sidebar-fixed="true"
-    data-mz-app-sidebar-hoverable="true"
-    data-mz-app-sidebar-minimize="off"
-    data-mz-app-sidebar-push-header="true"
-    data-mz-app-sidebar-push-toolbar="true"
-    data-mz-app-sidebar-push-footer="true"
-    data-mz-app-sidebar-panel-fixed="true"
-    data-mz-app-header-fixed="true"
-    data-mz-app-header-minimize="on"
-    cz-shortcut-listen="true"
-  >
-    <!--begin::Theme mode setup on page load-->
-    <script>
-      let themeMode = "dark";
-      document.documentElement.setAttribute("data-bs-theme", themeMode);
-    </script>
-    <!--end::Theme mode setup on page load-->
 
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/public/splash-screen.css" />
+  <title>Provider Dashboard</title>
+</head>
+
+<body class="app-dark-sidebar" id="mz_app_body" data-mz-app-layout="dark-sidebar" data-mz-app-toolbar-enabled="true"
+  data-mz-app-sidebar-enabled="true" data-mz-app-sidebar-fixed="true" data-mz-app-sidebar-hoverable="true"
+  data-mz-app-sidebar-minimize="off" data-mz-app-sidebar-push-header="true" data-mz-app-sidebar-push-toolbar="true"
+  data-mz-app-sidebar-push-footer="true" data-mz-app-sidebar-panel-fixed="true" data-mz-app-header-fixed="true"
+  data-mz-app-header-minimize="on" cz-shortcut-listen="true">
+  <!--begin::Theme mode setup on page load-->
+  <script>
+    let themeMode = "dark";
+    document.documentElement.setAttribute("data-bs-theme", themeMode);
+  </script>
+  <!--end::Theme mode setup on page load-->
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
