@@ -39,12 +39,12 @@
                                     <span class="text-gray-600 fw-bold fs-6">{{ row.bookings }}</span>
                                 </td>
                                 <td class="text-end pe-0">
-                                    <span class="text-gray-600 fw-bold fs-6">{{ row.status }}</span>
+                                    <span class="text-gray-600 fw-bold fs-6 badge text-bg-success">{{ row.status }}</span>
                                 </td>
                                 <td class="text-end pe-0">
                                     <span class="text-dark-600 fw-bold fs-6">
                                         <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+                                            class="btn btn-sm btn-icon btn-bg-dark btn-active-color-primary w-30px h-30px">
                                             View
                                         </a>
                                     </span>
