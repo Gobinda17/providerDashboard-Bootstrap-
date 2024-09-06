@@ -13,10 +13,12 @@
             <!--begin::Checkboxes-->
             <div class="d-flex align-items-center justify-content-start mb-4">
                 <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour,i) in tour_types" :key="i">
-                    <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]" :value="tour.id" checked v-modal="formData.tour_type_id"/>
+                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour, j) in tour_types" :key="j">
+                    <input class="form-check-input h-20px w-20px" type="radio" :value="tour.id"
+                        v-model="formData.tour_type_id" />
                     <span class="form-check-label fw-semobold">{{ tour.name }} </span>
                 </label>
+                <span class="text-danger" v-if="errors.tour_type_id">{{ errors.tour_type_id }}</span>
                 <!--end::Checkbox-->
             </div>
             <!--end::Checkboxes-->
@@ -33,6 +35,7 @@
                     <el-input type="text" v-model="formData.tour_name" placeholder="Enter Tour Name"
                         name="tour_name"></el-input>
                 </el-form-item>
+                <span class="text-danger" v-if="errors.tour_name">{{ errors.tour_name }}</span>
             </div>
             <!--end::Input group-->
 
@@ -49,6 +52,7 @@
                         <el-input type="number" v-model="formData.slot_capacity" placeholder="Enter Capacity"
                             name="capacity"></el-input>
                     </el-form-item>
+                    <span class="text-danger" v-if="errors.slot_capacity">{{ errors.slot_capacity }}</span>
                 </div>
                 <div class="col-md-3 fv-row">
                     <!--begin::Label-->
@@ -61,6 +65,7 @@
                         <el-input type="text" v-model="formData.starting_point" placeholder="Enter Starting Point"
                             name="starting_point"></el-input>
                     </el-form-item>
+                    <span class="text-danger" v-if="errors.starting_point">{{ errors.starting_point }}</span>
                 </div>
                 <div class="col-md-3 fv-row">
                     <!--begin::Label-->
@@ -70,21 +75,10 @@
                     <!--end::Label-->
 
                     <el-form-item prop="targetTitle">
-                        <el-input type="number" v-model="formData.price" placeholder="Enter Price"
-                            name="price"></el-input>
-                    </el-form-item>
-                </div>
-                <div class="col-md-3 fv-row">
-                    <!--begin::Label-->
-                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                        <span class="required"></span>
-                    </label>
-                    <!--end::Label-->
-
-                    <el-form-item prop="targetTitle">
                         <el-input type="number" v-model="formData.price_per_persion" placeholder="Enter Price"
                             name="price"></el-input>
                     </el-form-item>
+                    <span class="text-danger" v-if="errors.price">{{ errors.price }}</span>
                 </div>
             </div>
             <!--end::Input group-->
@@ -103,6 +97,7 @@
                             <el-option label="On an Event" value="2">On an Event</el-option>
                         </el-select>
                     </el-form-item>
+                    <span class="text-danger" v-if="errors.available">{{ errors.available }}</span>
                 </div>
                 <!--end::Col-->
 
@@ -121,6 +116,7 @@
                                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff; --el-date-editor-width: 100%;"
                                         v-model="formData.startDate" />
                                 </el-form-item>
+                                <span class="text-danger" v-if="errors.startDate">{{ errors.startDate }}</span>
                                 <!--end::Datepicker-->
                             </div>
                             <!--end::Input-->
@@ -139,6 +135,7 @@
                                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff; --el-date-editor-width: 100%;"
                                         v-model="formData.endDate" />
                                 </el-form-item>
+                                <span class="text-danger" v-if="errors.endDate">{{ errors.endDate }}</span>
                                 <!--end::Datepicker-->
                             </div>
                             <!--end::Input-->
@@ -221,18 +218,19 @@
                         placeholder="Descriptions"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;" />
                 </el-form-item>
+                <span class="text-danger" v-if="errors.description">{{ errors.description }}</span>
             </div>
             <!--end::Input group-->
 
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-8">
                 <label class="fs-6 fw-semobold mb-2">Rules and Regulations</label>
-
                 <el-form-item prop="targetDetails">
                     <el-input v-model="formData.rules_regulation" type="textarea" rows="3" name="description"
                         placeholder="Rules and Regulations"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;" />
                 </el-form-item>
+                <span class="text-danger" v-if="errors.rules_regulation">{{ errors.rules_regulation }}</span>
             </div>
             <!--end::Input group-->
 
@@ -241,10 +239,11 @@
                 <label class="fs-6 fw-semobold mb-2">Features or Amenities</label>
 
                 <el-form-item prop="targetDetails">
-                    <el-input v-model="formData.features_ammunitues" type="textarea" rows="3" name="description"
+                    <el-input v-model="formData.features_amenities" type="textarea" rows="3" name="description"
                         placeholder="Features or Amenities"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;" />
                 </el-form-item>
+                <span class="text-danger" v-if="errors.features_amenities">{{ errors.features_amenities }}</span>
             </div>
             <!--end::Input group-->
 
@@ -257,16 +256,13 @@
                 <!--end::Label-->
 
                 <el-form-item prop="tags">
-                    <el-select v-model="tags" multiple filterable allow-create default-first-option
+                    <el-select v-model="formData.tags" multiple filterable allow-create default-first-option
                         placeholder="Choose tags for your target"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;">
-                        <el-option label="Important" value="important"> </el-option>
-                        <el-option label="Urgent" value="urgent"> </el-option>
-                        <el-option label="High" value="high"> </el-option>
-                        <el-option label="Low" value="low"> </el-option>
-                        <el-option label="Medium" value="medium"> </el-option>
+                        <el-option label="Important" :value="tag.id" v-for="(tag,i) in tagOptions" :key="i"> {{ tag.name }}</el-option>
                     </el-select>
                 </el-form-item>
+                <span class="text-danger" v-if="errors.tags">{{ errors.tags }}</span>
             </div>
             <!--end::Input group-->
 
@@ -275,7 +271,6 @@
                 <button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">
                     Cancel
                 </button>
-
                 <!--begin::Button-->
                 <button class="btn btn-lg btn-primary" type="submit">
                     <span class="indicator-label">
@@ -297,7 +292,8 @@ export default {
     data() {
         return {
             inpurField: '',
-            tags: [],
+            tour_types: [],
+            tagOptions: [],
             formData: {
                 location: "",
                 startDate: "",
@@ -314,7 +310,23 @@ export default {
                 slot_capacity: '',
                 starting_point: '',
                 description: '',
-                features_ammunitues: '',
+                features_amenities: '',
+                rules_regulation: '',
+                tags: [],
+                selectedImages: [],
+
+            },
+            errors: {
+                location: "",
+                startDate: "",
+                endDate: "",
+                tour_name: '',
+                tour_type_id: '',
+                price_per_persion: '',
+                slot_capacity: '',
+                starting_point: '',
+                description: '',
+                features_amenities: '',
                 rules_regulation: '',
             },
         };
@@ -327,13 +339,15 @@ export default {
                 slot_capacity: this.formData.slot_capacity ? null : 'Capacity Field is required',
                 starting_point: this.formData.starting_point ? null : 'Starting Point Field is required',
                 description: this.formData.description ? null : 'Description Field is required',
-                features_ammunitues: this.formData.features_ammunitues ? null : 'Features Field is required',
+                features_amenities: this.formData.features_amenities ? null : 'Features Field is required',
                 rules_regulation: this.formData.rules_regulation ? null : 'Rules and Regulation Field is required',
             };
             return Object.values(this.errors).every((error) => error === null);
         },
         onSubmit() {
-            if (this.validateForm()) {
+            console.log(this.formData.tags);
+            
+            // if (this.validateForm()) {
                 this.loading = true;
                 apiClient({
                     url: 'provider/activity/tour', method: 'post', data: this.formData, headers: {
@@ -365,15 +379,24 @@ export default {
                     }
 
                 });
-            }
+            // }
 
         },
         fetchData() {
             apiClient({ url: 'provider/tour-types', method: 'get' }).then(res => {
                 this.tour_types = res.data.tour_types;
+                console.log(this.tour_types);
+                
                 setTimeout(() => {
                     this.loading = false;
                 }, 200);
+            }).catch((err) => {
+                console.log(err);
+            });
+        },
+        fetchTags() {
+            apiClient({ url: 'provider/tags', method: 'get' }).then(res => {
+                this.tagOptions = res.data.tags;
             }).catch((err) => {
                 console.log(err);
             });
@@ -393,6 +416,7 @@ export default {
     },
     mounted() {
         this.fetchData();
+        this.fetchTags();
     }
 
 }
