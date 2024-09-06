@@ -32,7 +32,7 @@
                     </span>
                 </router-link>
             </div>
-            <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click" @click="showDropDown()">
+            <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click" @click="showDropDown($event)">
                 <span class="router-link-exact-active menu-link justify-content-between">
                     <span class="menu-heading fw-bold text-uppercase fs-7">
                         <i class="ri-pages-line"></i>
@@ -59,25 +59,113 @@
                             <span class="menu-title">Tour</span>
                         </router-link>
                     </div>
-                    <!-- <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click">
-                        <span class="menu-link">
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Demo-2</span>
-                            <span class="menu-arrow"></span>
+                            <span class="menu-title">Ride</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Adventure</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Rentals</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Events</span>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <span class="router-link-exact-active menu-link justify-content-between">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Bookings
                         </span>
-                        <div class="menu-sub menu-sub-accordion">
-                            <div class="menu-item">
-                                <router-link class="menu-link" active-class="active" to="/">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Dem0-3</span>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div> -->
+                    </span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <span class="router-link-exact-active menu-link justify-content-between">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Messages
+                        </span>
+                    </span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <span class="router-link-exact-active menu-link justify-content-between">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Notifications
+                        </span>
+                    </span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <span class="router-link-exact-active menu-link justify-content-between">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Followers
+                        </span>
+                    </span>
+                    <span class="menu-arrow"></span>
+                </span>
+            </div>
+            <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click" @click="showDropDown($event)">
+                <span class="router-link-exact-active menu-link justify-content-between">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">
+                        <i class="ri-pages-line"></i>
+                        <span class="menuTitle">
+                            Settings
+                        </span>
+                    </span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Profile</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Aggrements</span>
+                        </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link class="menu-link" active-class="active" to="#">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Payments</span>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,7 +180,8 @@
 export default {
     name: "Sidebar Menu",
     methods: {
-        showDropDown() {
+        showDropDown(event) {
+            console.log(event)
             let showDropDown = document.getElementsByClassName('menu-accordion');
             for(let i = 0; i < showDropDown.length; i++) {
                 if(showDropDown[i].classList.contains('show')) {

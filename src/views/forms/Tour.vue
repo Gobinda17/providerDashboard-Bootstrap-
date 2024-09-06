@@ -13,7 +13,7 @@
             <!--begin::Checkboxes-->
             <div class="d-flex align-items-center justify-content-start mb-4">
                 <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid me-10" v-for="tour in tour_types">
+                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour,i) in tour_types" :key="i">
                     <input class="form-check-input h-20px w-20px" type="checkbox" name="stay[]" :value="tour.id" checked v-modal="formData.tour_type_id"/>
                     <span class="form-check-label fw-semobold">{{ tour.name }} </span>
                 </label>
