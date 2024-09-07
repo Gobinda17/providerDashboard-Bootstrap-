@@ -68,6 +68,15 @@ const router = createRouter({
             pageTitle: "Tour",
             breadcrumbs: ['Tour', 'Registration'],
           },
+        },
+        {
+          path: '/bookings',
+          name: 'Bookings',
+          component: () => import('../views/pages/Bookings.vue'),
+          meta: {
+            pageTitle: "Bookings",
+            breadcrumbs: ['Dashboard', 'Bookings'],
+          },
         }
       ]
     },

@@ -13,6 +13,8 @@ import 'element-plus/dist/index.css'
 import apiClient from '../src/utils/apiClient'
 import store from './views/store'
 
+import VueApexCharts from "vue3-apexcharts";
+
 
 const token = localStorage.getItem('token')
 if(token){
@@ -41,5 +43,7 @@ const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
 app.use(store)
+
+app.use(VueApexCharts);
 
 app.mount('#app')
