@@ -314,6 +314,7 @@ export default {
                 rules_regulation: '',
                 tags: [],
                 selectedImages: [],
+                new_tags: [],
 
             },
             errors: {
@@ -358,7 +359,7 @@ export default {
                     // for (const property in this.provider_details) {
                     //     this.form[property] = this.provider_details[property][0]
                     // }
-                    this.formData = {};
+                    // this.formData = {};
                     setTimeout(() => {
                         this.loading = false;
                         Swal.fire({
