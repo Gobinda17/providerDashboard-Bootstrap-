@@ -4,8 +4,11 @@
             <div class="col-12 col-lg-4">
                 <Highlights></Highlights>
             </div>
-            <div class="col-12 mb-md-5 mb-xl-10">
+            <div class="col-12 col-lg-8">
                 <TableWidget></TableWidget>
+            </div>
+            <div class="col-12 mb-md-5 mb-xl-10">
+                <TableDetails></TableDetails>
             </div>
         </div>
     </div>
@@ -13,12 +16,14 @@
 
 <script>
 import TableWidget from '../components/dashboard_widget/TableWidget.vue';
+import TableDetails from '../components/dashboard_widget/TableDetails.vue';
 import Highlights from '../components/dashboard_widget/Highlights.vue';
 export default {
     name: "Dashboard",
     components: {
         TableWidget,
-        Highlights
+        Highlights,
+        TableDetails
     },
 }
 </script>wasda
