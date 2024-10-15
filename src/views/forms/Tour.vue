@@ -86,7 +86,7 @@
             <!--begin::Input group-->
             <div class="row g-9">
                 <!--begin::Col-->
-                <div class="col-md-6 fv-row">
+                <!-- <div class="col-md-6 fv-row">
                     <label class="required fs-6 fw-semobold mb-2">Availability</label>
 
                     <el-form-item prop="assign">
@@ -98,18 +98,16 @@
                         </el-select>
                     </el-form-item>
                     <span class="text-danger" v-if="errors.available">{{ errors.available }}</span>
-                </div>
+                </div> -->
                 <!--end::Col-->
 
                 <!--begin::Col-->
-                <div class="col-md-6 fv-row">
+                <!-- <div class="col-md-6 fv-row">
                     <div class="row">
                         <div class="col-6">
                             <label class="required fs-6 fw-semobold mb-2">Start Date</label>
 
-                            <!--begin::Input-->
                             <div class="position-relative align-items-center">
-                                <!--begin::Datepicker-->
                                 <el-form-item prop="startDate">
                                     <el-date-picker type="date" placeholder="Select a date" :teleported="false"
                                         popper-class="override-styles" name="startDate" width="100%"
@@ -117,18 +115,13 @@
                                         v-model="formData.startDate" />
                                 </el-form-item>
                                 <span class="text-danger" v-if="errors.startDate">{{ errors.startDate }}</span>
-                                <!--end::Datepicker-->
                             </div>
-                            <!--end::Input-->
                         </div>
 
-                        <!--begin::Col-->
                         <div class="col-md-6 ">
                             <label class="required fs-6 fw-semobold mb-2">End Date</label>
 
-                            <!--begin::Input-->
                             <div class="position-relative align-items-center">
-                                <!--begin::Datepicker-->
                                 <el-form-item prop="endDate">
                                     <el-date-picker type="date" placeholder="Select a date" :teleported="false"
                                         popper-class="override-styles" name="endDate"
@@ -136,14 +129,10 @@
                                         v-model="formData.endDate" />
                                 </el-form-item>
                                 <span class="text-danger" v-if="errors.endDate">{{ errors.endDate }}</span>
-                                <!--end::Datepicker-->
                             </div>
-                            <!--end::Input-->
                         </div>
-                        <!--end::Col-->
                     </div>
-                </div>
-                <!--end::Col-->
+                </div> -->
             </div>
             <!--end::Input group-->
 
