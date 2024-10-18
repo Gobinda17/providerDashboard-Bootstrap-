@@ -13,7 +13,8 @@
             <!--begin::Checkboxes-->
             <div class="d-flex align-items-center justify-content-start mb-4">
                 <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour, j) in tour_types" :key="j">
+                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour, j) in tour_types"
+                    :key="j">
                     <input class="form-check-input h-20px w-20px" type="radio" :value="tour.id"
                         v-model="formData.tour_type_id" />
                     <span class="form-check-label fw-semobold">{{ tour.name }} </span>
@@ -148,13 +149,16 @@
                                 </label>
                                 <!--end::Label-->
 
-                                <el-form-item prop="targetTitle">
+                                <!-- <el-form-item prop="targetTitle">
                                     <el-input type="file" v-model="image.name" placeholder="Enter Location"></el-input>
-                                </el-form-item>
+                                </el-form-item> -->
+                                <ImageVideo :selectedImages="formData.selectedImages" />
+                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
+                                    }}</span>
                             </div>
                             <!--end::Input group-->
                         </div>
-                        <div class="col-2 d-flex align-items-center">
+                        <!-- <div class="col-2 d-flex align-items-center">
                             <button v-show="index === 0" class="btn btn-sm btn-primary w-100" type="button"
                                 @click="addMore">
                                 <i class="ri-file-add-line" style="font-size: 20px;"></i>
@@ -163,7 +167,7 @@
                                 @click="deleteFile(index)">
                                 <i class="ri-chat-delete-line" style="font-size: 20px;"></i>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -248,7 +252,8 @@
                     <el-select v-model="formData.tags" multiple filterable allow-create default-first-option
                         placeholder="Choose tags for your target"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;">
-                        <el-option label="Important" :value="tag.id" v-for="(tag,i) in tagOptions" :key="i"> {{ tag.name }}</el-option>
+                        <el-option label="Important" :value="tag.id" v-for="(tag, i) in tagOptions" :key="i"> {{ tag.name
+                            }}</el-option>
                     </el-select>
                 </el-form-item>
                 <span class="text-danger" v-if="errors.tags">{{ errors.tags }}</span>
@@ -275,9 +280,14 @@
 </template>
 
 <script>
-import apiClient from "../../utils/apiClient"
+import apiClient from "../../utils/apiClient";
+import ImageVideo from "../components/ImageVideoUpload.vue"
+
 export default {
     name: 'Tour',
+    components: {
+        ImageVideo
+    },
     data() {
         return {
             inpurField: '',
@@ -318,6 +328,8 @@ export default {
                 description: '',
                 features_amenities: '',
                 rules_regulation: '',
+                selectedImages: [],
+
             },
         };
     },
@@ -336,39 +348,39 @@ export default {
         },
         onSubmit() {
             console.log(this.formData.tags);
-            
+
             // if (this.validateForm()) {
-                this.loading = true;
-                apiClient({
-                    url: 'provider/activity/tour', method: 'post', data: this.formData, headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                }).then(res => {
-                    // this.provider_details = res.data.provider_details;
-                    // for (const property in this.provider_details) {
-                    //     this.form[property] = this.provider_details[property][0]
-                    // }
-                    // this.formData = {};
-                    setTimeout(() => {
-                        this.loading = false;
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Data Saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }, 1000);
-
-                }).catch((err) => {
+            this.loading = true;
+            apiClient({
+                url: 'provider/activity/tour', method: 'post', data: this.formData, headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            }).then(res => {
+                // this.provider_details = res.data.provider_details;
+                // for (const property in this.provider_details) {
+                //     this.form[property] = this.provider_details[property][0]
+                // }
+                // this.formData = {};
+                setTimeout(() => {
                     this.loading = false;
-                    this.reponseErrors = JSON.parse(err.response.data.error)
-                    console.log(this.reponseErrors);
-                    for (const property in this.reponseErrors) {
-                        this.errors[property] = this.reponseErrors[property][0]
-                    }
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Data Saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }, 1000);
 
-                });
+            }).catch((err) => {
+                this.loading = false;
+                this.reponseErrors = JSON.parse(err.response.data.error)
+                console.log(this.reponseErrors);
+                for (const property in this.reponseErrors) {
+                    this.errors[property] = this.reponseErrors[property][0]
+                }
+
+            });
             // }
 
         },
@@ -376,7 +388,7 @@ export default {
             apiClient({ url: 'provider/tour-types', method: 'get' }).then(res => {
                 this.tour_types = res.data.tour_types;
                 console.log(this.tour_types);
-                
+
                 setTimeout(() => {
                     this.loading = false;
                 }, 200);
