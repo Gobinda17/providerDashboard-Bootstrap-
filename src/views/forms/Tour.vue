@@ -139,34 +139,18 @@
 
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <div class="row" v-for="(image, index) in formData.images" :key="index">
+                    <div class="row">
                         <div class="col-10">
-                            <!--begin::Input group-->
                             <div class="d-flex flex-column fv-row">
-                                <!--begin::Label-->
                                 <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                                     <span class="required">Upload Image</span>
                                 </label>
-                                <!--end::Label-->
-
-                                <!-- <el-form-item prop="targetTitle">
-                                    <el-input type="file" v-model="image.name" placeholder="Enter Location"></el-input>
-                                </el-form-item> -->
-                                <imageUpload :selectedImages="formData.selectedImages" />                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
+                                <imageUpload :selectedImages="formData.selectedImages" />
+                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
                                     }}</span>
                             </div>
-                            <!--end::Input group-->
                         </div>
-                        <!-- <div class="col-2 d-flex align-items-center">
-                            <button v-show="index === 0" class="btn btn-sm btn-primary w-100" type="button"
-                                @click="addMore">
-                                <i class="ri-file-add-line" style="font-size: 20px;"></i>
-                            </button>
-                            <button v-show="index > 0" class="btn btn-sm btn-danger w-100" type="button"
-                                @click="deleteFile(index)">
-                                <i class="ri-chat-delete-line" style="font-size: 20px;"></i>
-                            </button>
-                        </div> -->
+
                     </div>
                 </div>
 
@@ -251,7 +235,8 @@
                     <el-select v-model="formData.tags" multiple filterable allow-create default-first-option
                         placeholder="Choose tags for your target"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;">
-                        <el-option label="Important" :value="tag.id" v-for="(tag, i) in tagOptions" :key="i"> {{ tag.name
+                        <el-option label="Important" :value="tag.id" v-for="(tag, i) in tagOptions" :key="i"> {{
+                            tag.name
                             }}</el-option>
                     </el-select>
                 </el-form-item>
@@ -296,9 +281,6 @@ export default {
                 location: "",
                 startDate: "",
                 endDate: "",
-                images: [{
-                    name: "",
-                }],
                 videos: [{
                     name: ""
                 }],
@@ -346,8 +328,6 @@ export default {
             return Object.values(this.errors).every((error) => error === null);
         },
         onSubmit() {
-            console.log(this.formData.tags);
-
             // if (this.validateForm()) {
             this.loading = true;
             apiClient({
@@ -401,12 +381,6 @@ export default {
             }).catch((err) => {
                 console.log(err);
             });
-        },
-        addMore() {
-            this.formData.images.push({ name: "" });
-        },
-        deleteFile(index) {
-            this.formData.images.splice(index, 1);
         },
         addMoreVideo() {
             this.formData.videos.push({ name: "" });

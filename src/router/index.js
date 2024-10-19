@@ -70,6 +70,15 @@ const router = createRouter({
           },
         },
         {
+          path: '/provider/tour-details',
+          name: 'providerTourDetails',
+          component: () => import('../views/tour/tourDetails.vue'),
+          meta: {
+            pageTitle: "Tour Details",
+            breadcrumbs: ['Dashboard', 'Tour Details'],
+          },
+        },
+        {
           path: '/bookings',
           name: 'Bookings',
           component: () => import('../views/pages/Bookings.vue'),
