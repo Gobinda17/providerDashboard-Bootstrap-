@@ -152,8 +152,7 @@
                                 <!-- <el-form-item prop="targetTitle">
                                     <el-input type="file" v-model="image.name" placeholder="Enter Location"></el-input>
                                 </el-form-item> -->
-                                <ImageVideo :selectedImages="formData.selectedImages" />
-                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
+                                <imageUpload :selectedImages="formData.selectedImages" />                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
                                     }}</span>
                             </div>
                             <!--end::Input group-->
@@ -281,12 +280,12 @@
 
 <script>
 import apiClient from "../../utils/apiClient";
-import ImageVideo from "../components/ImageVideoUpload.vue"
+import imageUpload from "../components/imageUpload.vue";
 
 export default {
     name: 'Tour',
     components: {
-        ImageVideo
+        imageUpload
     },
     data() {
         return {
