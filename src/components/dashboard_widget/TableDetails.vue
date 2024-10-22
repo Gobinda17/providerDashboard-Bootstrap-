@@ -132,14 +132,14 @@ export default {
             this.view = value;
         },
         fetchData() {
-            $("#dataTableWeek").DataTable({
-                pageLength: 10,
-                ordering: false,
-                lengthChange: false,
-                searching: true,
-                info: false,
-                bDestroy: true
-            });
+            // $("#dataTableWeek").DataTable({
+            //     pageLength: 10,
+            //     ordering: false,
+            //     lengthChange: false,
+            //     searching: true,
+            //     info: false,
+            //     bDestroy: true
+            // });
         }
     },
     mounted() {

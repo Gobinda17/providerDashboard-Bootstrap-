@@ -266,7 +266,8 @@
 <script>
 import apiClient from "../../utils/apiClient";
 import imageUpload from "../components/imageUpload.vue";
-
+// import { mapGetters } from 'vuex';
+import store from "../store";
 export default {
     name: 'Tour',
     components: {
@@ -390,8 +391,10 @@ export default {
         }
     },
     mounted() {
+        
         this.fetchData();
         this.fetchTags();
+        console.log(store.getters.getRole);
     }
 
 }
