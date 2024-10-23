@@ -13,7 +13,8 @@
             <!--begin::Checkboxes-->
             <div class="d-flex align-items-center justify-content-start mb-4">
                 <!--begin::Checkbox-->
-                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour, j) in tour_types" :key="j">
+                <label class="form-check form-check-custom form-check-solid me-10" v-for="(tour, j) in tour_types"
+                    :key="j">
                     <input class="form-check-input h-20px w-20px" type="radio" :value="tour.id"
                         v-model="formData.tour_type_id" />
                     <span class="form-check-label fw-semobold">{{ tour.name }} </span>
@@ -86,7 +87,7 @@
             <!--begin::Input group-->
             <div class="row g-9">
                 <!--begin::Col-->
-                <div class="col-md-6 fv-row">
+                <!-- <div class="col-md-6 fv-row">
                     <label class="required fs-6 fw-semobold mb-2">Availability</label>
 
                     <el-form-item prop="assign">
@@ -98,18 +99,16 @@
                         </el-select>
                     </el-form-item>
                     <span class="text-danger" v-if="errors.available">{{ errors.available }}</span>
-                </div>
+                </div> -->
                 <!--end::Col-->
 
                 <!--begin::Col-->
-                <div class="col-md-6 fv-row">
+                <!-- <div class="col-md-6 fv-row">
                     <div class="row">
                         <div class="col-6">
                             <label class="required fs-6 fw-semobold mb-2">Start Date</label>
 
-                            <!--begin::Input-->
                             <div class="position-relative align-items-center">
-                                <!--begin::Datepicker-->
                                 <el-form-item prop="startDate">
                                     <el-date-picker type="date" placeholder="Select a date" :teleported="false"
                                         popper-class="override-styles" name="startDate" width="100%"
@@ -117,18 +116,13 @@
                                         v-model="formData.startDate" />
                                 </el-form-item>
                                 <span class="text-danger" v-if="errors.startDate">{{ errors.startDate }}</span>
-                                <!--end::Datepicker-->
                             </div>
-                            <!--end::Input-->
                         </div>
 
-                        <!--begin::Col-->
                         <div class="col-md-6 ">
                             <label class="required fs-6 fw-semobold mb-2">End Date</label>
 
-                            <!--begin::Input-->
                             <div class="position-relative align-items-center">
-                                <!--begin::Datepicker-->
                                 <el-form-item prop="endDate">
                                     <el-date-picker type="date" placeholder="Select a date" :teleported="false"
                                         popper-class="override-styles" name="endDate"
@@ -136,45 +130,27 @@
                                         v-model="formData.endDate" />
                                 </el-form-item>
                                 <span class="text-danger" v-if="errors.endDate">{{ errors.endDate }}</span>
-                                <!--end::Datepicker-->
                             </div>
-                            <!--end::Input-->
                         </div>
-                        <!--end::Col-->
                     </div>
-                </div>
-                <!--end::Col-->
+                </div> -->
             </div>
             <!--end::Input group-->
 
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <div class="row" v-for="(image, index) in formData.images" :key="index">
+                    <div class="row">
                         <div class="col-10">
-                            <!--begin::Input group-->
                             <div class="d-flex flex-column fv-row">
-                                <!--begin::Label-->
                                 <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                                     <span class="required">Upload Image</span>
                                 </label>
-                                <!--end::Label-->
-
-                                <el-form-item prop="targetTitle">
-                                    <el-input type="file" v-model="image.name" placeholder="Enter Location"></el-input>
-                                </el-form-item>
+                                <imageUpload :selectedImages="formData.selectedImages" />
+                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
+                                    }}</span>
                             </div>
-                            <!--end::Input group-->
                         </div>
-                        <div class="col-2 d-flex align-items-center">
-                            <button v-show="index === 0" class="btn btn-sm btn-primary w-100" type="button"
-                                @click="addMore">
-                                <i class="ri-file-add-line" style="font-size: 20px;"></i>
-                            </button>
-                            <button v-show="index > 0" class="btn btn-sm btn-danger w-100" type="button"
-                                @click="deleteFile(index)">
-                                <i class="ri-chat-delete-line" style="font-size: 20px;"></i>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
 
@@ -259,7 +235,9 @@
                     <el-select v-model="formData.tags" multiple filterable allow-create default-first-option
                         placeholder="Choose tags for your target"
                         style="--el-input-bg-color: transparent; --el-text-color-regular: #fff;">
-                        <el-option label="Important" :value="tag.id" v-for="(tag,i) in tagOptions" :key="i"> {{ tag.name }}</el-option>
+                        <el-option label="Important" :value="tag.id" v-for="(tag, i) in tagOptions" :key="i"> {{
+                            tag.name
+                            }}</el-option>
                     </el-select>
                 </el-form-item>
                 <span class="text-danger" v-if="errors.tags">{{ errors.tags }}</span>
@@ -286,9 +264,15 @@
 </template>
 
 <script>
-import apiClient from "../../utils/apiClient"
+import apiClient from "../../utils/apiClient";
+import imageUpload from "../components/imageUpload.vue";
+// import { mapGetters } from 'vuex';
+import store from "../store";
 export default {
     name: 'Tour',
+    components: {
+        imageUpload
+    },
     data() {
         return {
             inpurField: '',
@@ -298,9 +282,6 @@ export default {
                 location: "",
                 startDate: "",
                 endDate: "",
-                images: [{
-                    name: "",
-                }],
                 videos: [{
                     name: ""
                 }],
@@ -314,6 +295,7 @@ export default {
                 rules_regulation: '',
                 tags: [],
                 selectedImages: [],
+                new_tags: [],
 
             },
             errors: {
@@ -328,6 +310,8 @@ export default {
                 description: '',
                 features_amenities: '',
                 rules_regulation: '',
+                selectedImages: [],
+
             },
         };
     },
@@ -345,40 +329,38 @@ export default {
             return Object.values(this.errors).every((error) => error === null);
         },
         onSubmit() {
-            console.log(this.formData.tags);
-            
             // if (this.validateForm()) {
-                this.loading = true;
-                apiClient({
-                    url: 'provider/activity/tour', method: 'post', data: this.formData, headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                }).then(res => {
-                    // this.provider_details = res.data.provider_details;
-                    // for (const property in this.provider_details) {
-                    //     this.form[property] = this.provider_details[property][0]
-                    // }
-                    this.formData = {};
-                    setTimeout(() => {
-                        this.loading = false;
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Data Saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }, 1000);
-
-                }).catch((err) => {
+            this.loading = true;
+            apiClient({
+                url: 'provider/activity/tour', method: 'post', data: this.formData, headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            }).then(res => {
+                // this.provider_details = res.data.provider_details;
+                // for (const property in this.provider_details) {
+                //     this.form[property] = this.provider_details[property][0]
+                // }
+                // this.formData = {};
+                setTimeout(() => {
                     this.loading = false;
-                    this.reponseErrors = JSON.parse(err.response.data.error)
-                    console.log(this.reponseErrors);
-                    for (const property in this.reponseErrors) {
-                        this.errors[property] = this.reponseErrors[property][0]
-                    }
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Data Saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }, 1000);
 
-                });
+            }).catch((err) => {
+                this.loading = false;
+                this.reponseErrors = JSON.parse(err.response.data.error)
+                console.log(this.reponseErrors);
+                for (const property in this.reponseErrors) {
+                    this.errors[property] = this.reponseErrors[property][0]
+                }
+
+            });
             // }
 
         },
@@ -386,7 +368,7 @@ export default {
             apiClient({ url: 'provider/tour-types', method: 'get' }).then(res => {
                 this.tour_types = res.data.tour_types;
                 console.log(this.tour_types);
-                
+
                 setTimeout(() => {
                     this.loading = false;
                 }, 200);
@@ -401,12 +383,6 @@ export default {
                 console.log(err);
             });
         },
-        addMore() {
-            this.formData.images.push({ name: "" });
-        },
-        deleteFile(index) {
-            this.formData.images.splice(index, 1);
-        },
         addMoreVideo() {
             this.formData.videos.push({ name: "" });
         },
@@ -415,8 +391,10 @@ export default {
         }
     },
     mounted() {
+        
         this.fetchData();
         this.fetchTags();
+        console.log(store.getters.getRole);
     }
 
 }

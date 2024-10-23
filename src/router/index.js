@@ -4,25 +4,20 @@ import store from '../views/store'
 
 
 
-const authMiddleware = (to, from, next) => {
+const authMiddleware = (to, from, next) => {    
   if (to.meta.requireAuth) {
-    // Check if the user is logged in
     if (store.getters.isLoggedIn) {
-      // If the route has a required role, check if the user has that role
       if (to.meta.role && store.getters.getRole === to.meta.role) {
-        next(); // User is authenticated and has the required role
+        next(); 
       } else if (!to.meta.role) {
-        next({ name: 'home' }); // Redirect to home or another route
+        next({ name: 'LogIn' });
       } else {
-        // User does not have the required role
-        next({ name: 'home' }); // Redirect to home or another route
+        next({ name: 'LogIn' });
       }
     } else {
-      // User is not logged in, redirect to the login page
       next({ name: 'LogIn' });
     }
   } else {
-    // If the route does not require authentication, proceed to the route
     next();
   }
 };
@@ -49,6 +44,7 @@ const router = createRouter({
           meta: {
             pageTitle: "Dashboard",
             breadcrumbs: ['Dashboard'],
+            role: 'admin',
           },
         },
         {
@@ -70,6 +66,15 @@ const router = createRouter({
           },
         },
         {
+          path: '/provider/tour-details',
+          name: 'providerTourDetails',
+          component: () => import('../views/tour/tourDetails.vue'),
+          meta: {
+            pageTitle: "Tour Details",
+            breadcrumbs: ['Dashboard', 'Tour Details'],
+          },
+        },
+        {
           path: '/bookings',
           name: 'Bookings',
           component: () => import('../views/pages/Bookings.vue'),
@@ -83,4 +88,5 @@ const router = createRouter({
   ]
 })
 
+// router.beforeEach(authMiddleware);
 export default router

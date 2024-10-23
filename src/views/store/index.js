@@ -48,7 +48,7 @@ export default new Vuex.Store({
             const token = 'Bearer '+resp.data.access_token
             const user = resp.data.user
             const role = resp.data.role
-            const permissions = resp.data.permissions
+            const permissions = resp.data.permissions            
             localStorage.setItem('token', token)
             apiClient.defaults.headers.common['Authorization'] = token
             commit('auth_success', token, user)
