@@ -13,6 +13,8 @@
     "apexcharts": "^3.53.0",
     "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
+    "datatables.net-bs5": "^2.1.6",
+    "datatables.net-vue3": "^3.0.2",
     "element-plus": "^2.7.7",
     "remixicon": "^4.3.0",
     "vue": "^3.4.29",
