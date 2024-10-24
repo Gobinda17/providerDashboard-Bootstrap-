@@ -20,7 +20,7 @@ export default {
     // },
     // getPermission: function () {
     //   return this.$store.getters.getPermission
-    // }
+    // } 
   },
   created() {
     this.fetchUser();
