@@ -81,6 +81,25 @@
                     </el-form-item>
                     <span class="text-danger" v-if="errors.price">{{ errors.price }}</span>
                 </div>
+                <div class="col-md-3 fv-row">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-flex flex-column fv-row">
+                                <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                                    <span class="required">Upload Image</span>
+                                </label>
+                                <!-- <imageUpload :selectedImages="formData.selectedImages" />
+                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
+                                    }}</span> -->
+                                <button class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#add-images">
+                                    <i class="ri-file-add-line" style="font-size: 20px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!--end::Input group-->
 
@@ -138,23 +157,7 @@
             <!--end::Input group-->
 
             <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="d-flex flex-column fv-row">
-                                <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                                    <span class="required">Upload Image</span>
-                                </label>
-                                <imageUpload :selectedImages="formData.selectedImages" />
-                                <span class="text-red-500" v-if="errors.selectedImages">{{ errors.selectedImages
-                                    }}</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6">
+                <div class="col-12">
                     <div class="row" v-for="(video, index) in formData.videos" :key="index">
                         <div class="col-10">
                             <!--begin::Input group-->
@@ -259,6 +262,45 @@
             </div>
             <!--end::Actions-->
         </el-form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="add-images" ref="newTargetModalRef" tabindex="-1" aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <!--begin::Modal content-->
+                <div class="modal-content rounded">
+                    <!--begin::Modal header-->
+                    <div class="modal-header pb-0 border-0 justify-content-end">
+                        <!--begin::Close-->
+                        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                            <i class="ri-close-line fs-2"></i>
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--begin::Modal header-->
+
+                    <!--begin::Modal body-->
+                    <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex flex-column fv-row">
+                                    <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                                        <span class="required">Upload Image</span>
+                                    </label>
+                                    <!-- <div v-if="errors.selectedImages">
+                                        {{ errors.selectedImages }}
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <imageUpload :selectedImages="formData.selectedImages" />
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal content-->
+            </div>
+            <!--end::Modal dialog-->
+        </div>
         <!--end:Form-->
     </div>
 </template>
@@ -296,7 +338,6 @@ export default {
                 tags: [],
                 selectedImages: [],
                 new_tags: [],
-
             },
             errors: {
                 location: "",
@@ -310,8 +351,7 @@ export default {
                 description: '',
                 features_amenities: '',
                 rules_regulation: '',
-                selectedImages: [],
-
+                selectedImages: "",
             },
         };
     },

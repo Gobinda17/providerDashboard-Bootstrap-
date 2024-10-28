@@ -1,13 +1,15 @@
 <template>
-    <div class="col-md-12">
-        <input type="file" accept="image/*" multiple ref="imageInput" @change="handleFileChange" />
-    </div>
-    <div class="col-md-3">
-        <div v-if="selectedImages.length > 0">
-            <h3>Selected Images:</h3>
-            <div v-for="(image, index) in selectedImages" :key="index" class="image-preview">
-                <img :src="image.preview" alt="Selected Image" />
-                <button @click.prevent="removeImage(index)">Remove</button>
+    <div class="row g-4">
+        <div class="col-12">
+            <input type="file" accept="image/*" multiple ref="imageInput" @change="handleFileChange" />
+        </div>
+        <div class="col-12">
+            <h3  v-if="selectedImages.length > 0">Selected Images:</h3>
+            <div v-if="selectedImages.length > 0" class="gap-2">
+                <div v-for="(image, index) in selectedImages" :key="index" class="position-relative">
+                    <img :src="image.preview" alt="Selected Image" class="w-100" />
+                    <button class="position-absolute btn btn-sm btn-danger" @click.prevent="removeImage(index)" style="left: 90%; top: -8%;">Remove</button>
+                </div>
             </div>
         </div>
     </div>
