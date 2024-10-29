@@ -182,6 +182,44 @@
                         </div>
                     </div>
                 </div>
+                <div class="menu-item menu-accordion" data-mz-menu-sub="accordion" data-mz-menu-trigger="click"
+                    @click="showDropDown(2)">
+                    <span class="router-link-exact-active menu-link justify-content-between">
+                        <span class="menu-heading fw-bold text-uppercase fs-7">
+                            <i class="ri-pages-line"></i>
+                            <span class="menuTitle">
+                                ROLE & PERMISSIONS
+                            </span>
+                        </span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <router-link class="menu-link" active-class="active" to="/dashboard/roles">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Roles</span>
+                            </router-link>
+                        </div>
+                        <div class="menu-item">
+                            <router-link class="menu-link" active-class="active" to="/dashboard/permissions">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Aggrements</span>
+                            </router-link>
+                        </div>
+                        <div class="menu-item">
+                            <router-link class="menu-link" active-class="active" to="/dashboard/add-permissions">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Add permissions</span>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!--end::Menu-->
         </div>

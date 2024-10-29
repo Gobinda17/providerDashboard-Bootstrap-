@@ -8,21 +8,21 @@
         </h3>
         <div class="card">
             <div class="card-body">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-2 g-2" v-if="assignPermissions" v-for="permission in assignPermissions">
                         <form @submit.prevent="onDelete(permission['id'])">
                             <button type="submit" class="btn btn-danger">{{ permission.name }}</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
 
                 <form @submit.prevent="onSubmit">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-check" v-for="perm in permissions">
+                            <div class="form-check" v-for="(perm,i) in assignPermissions" :key="i">
                                 <input class="form-check-input" type="checkbox" :value="perm.name"
-                                    v-model="form.permission">
+                                    v-model="form.permission" :checked="perm.status">
                                 <label class="form-check-label" for="flexCheckChecked">
                                     {{ perm.name }}
                                 </label>
@@ -32,7 +32,6 @@
                             <button type="submit" class="btn btn-sm btn-success rounded-0">Submit</button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -48,7 +47,7 @@ export default {
     data() {
         return {
             form: { permission: [] },
-            permissions: [],
+            // permissions: [],
             role: [],
             assignPermissions: [],
             deletePermission: {},
@@ -61,7 +60,7 @@ export default {
         fetchData() {
             this.IsLoading = true;
             apiClient({ url: `/role/${this.$route.params.id}/permissions`, method: 'get' }).then(res => {
-                this.permissions = res.data.permissions
+                // this.permissions = res.data.permissions
                 this.role = res.data.role
                 this.assignPermissions = res.data.assignPermissions;
                 this.IsLoading = false;
